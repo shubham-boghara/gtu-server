@@ -1,0 +1,26 @@
+div.p-1
+            form(action="/search", method="get").flex.justify-around.flex-wrap
+                div
+                    label.block.text-sm.font-medium.text-gray-700(for='department-select') Choose a Department:
+                    select#department.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='department' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                        each val in Department
+                            option(value=val)= val
+                div
+                    label.block.text-sm.font-medium.text-gray-700(for='semester-select') Choose a Semester:
+                        select#semester.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='semester' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                            each val in Semester
+                                option(value=val)= val
+                div
+                    label.block.text-sm.font-medium.text-gray-700(for='year-select') Choose a Year:
+                        select#year.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='semester' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                            each val in Year
+                                option(value=val)= val
+                div
+                    label.block.text-sm.font-medium.text-gray-700(for='type-select') Choose a Type:
+                        select#type.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='semester' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                            each val in Type
+                                option(value=val)= val
+                div.p-4
+                    button.inline-flex.items-center.justify-center.px-4.py-2.border.border-transparent.text-sm.font-medium.rounded-md.shadow-sm.text-white.bg-blue-600(type='submit' class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500')
+                        | Search
+

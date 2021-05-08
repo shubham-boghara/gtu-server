@@ -1,0 +1,71 @@
+extends main/main
+include mixins/download
+include mixins/comment
+
+block content
+ .m.mt-8.max-w-3xl.mx-auto.grid.grid-cols-1.gap-6(class='sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3')
+     .space-y-6(class='lg:col-start-1 lg:col-span-2')
+         // Description list
+         section(aria-labelledby='applicant-information-title')
+             .bg-white.shadow(class='sm:rounded-lg')
+                 .px-4.py-5(class='sm:px-6')
+                     h2#applicant-information-title.text-lg.leading-6.font-medium.text-gray-900
+                         | PDF Information
+                     p.mt-1.max-w-2xl.text-sm.text-gray-500=name
+                 .border-t.border-gray-200.px-4.py-5(class='sm:px-6')
+                     dl.grid.grid-cols-1.gap-x-4.gap-y-8(class='sm:grid-cols-2')
+                         .class
+                           dt.text-sm.font-medium.text-gray-500
+                              | Name
+                           dd.mt-1.text-sm.text-gray-900=post.name
+                         .class
+                           dt.text-sm.font-medium.text-gray-500
+                              | title
+                           dd.mt-1.text-sm.text-gray-900=post.title
+                         .class
+                           dt.text-sm.font-medium.text-gray-500
+                             | About
+                           dd.mt-1.text-sm.text-gray-900=post.body
+                         .class
+                           dt.text-sm.font-medium.text-gray-500
+                             | Attachments
+                           dd.mt-1.text-sm.text-gray-900
+                             ul.border.border-gray-200.rounded-md.divide-y.divide-gray-200
+                              each file in files
+                                  +downloadblock({
+                                      name:file.name,
+                                      link:file.link
+                                  })
+
+                 div
+                   a.block.bg-gray-50.text-sm.font-medium.text-gray-500.text-center.px-4.py-4(href='#' class='hover:text-gray-700 sm:rounded-b-lg') Back
+ // Comments
+ section(aria-labelledby='notes-title')
+    .bg-white.shadow(class='sm:rounded-lg sm:overflow-hidden')
+        .bg-gray-50.px-4.py-6(class='sm:px-6')
+            .flex.space-x-3
+                .flex-shrink-0
+                    img.h-10.w-10.rounded-full(src='/svg/comment.svg' alt='')
+                .min-w-0.flex-1
+                    form(action='#')
+                        div
+                            label.sr-only(for='comment') About
+                            textarea#comment.shadow-sm.block.w-full.border-gray-300.rounded-md(name='comment' rows='3' class='focus:ring-blue-500 focus:border-blue-500 sm:text-sm' placeholder='Add a note')
+                        .mt-3.flex.items-center.justify-between
+                            a.group.inline-flex.items-start.text-sm.space-x-2.text-gray-500(href='' class='hover:text-gray-900')
+                                svg.flex-shrink-0.h-5.w-5.text-gray-400(class='group-hover:text-gray-500' x-description='Heroicon name: solid/question-mark-circle' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                                    path(fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z' clip-rule='evenodd')
+                                span
+                                    | Some HTML is okay.
+                            button.inline-flex.items-center.justify-center.px-4.py-2.border.border-transparent.text-sm.font-medium.rounded-md.shadow-sm.text-white.bg-blue-600(type='submit' class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500')
+                                | Comment
+        .divide-y.divide-gray-200
+            .px-4.py-5(class='sm:px-6')
+                h2#notes-title.text-lg.font-medium.text-gray-900 Notes
+            .px-4.py-6(class='sm:px-6 flex-1 min-h-0 relative overflow-y-auto')
+                ul.space-y-8
+                    each comment in comments
+                        +commentblock({
+                            name: comment.name,
+                            text: comment.text
+                        })

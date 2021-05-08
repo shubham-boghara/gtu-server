@@ -1,0 +1,19 @@
+extends main/main
+
+block content
+  .formContainer
+    form(action=`/${id}/uploadM`, method="post")
+      .material Material
+       br
+       label(name="name") Material Name:
+       input(name="name", placeholder="name" , type="text")
+       label(name="m_title") Material Title:
+       input(name="m_title", placeholder="title", type="text")
+       label(name="body") Description:
+       input(name="body", placeholder="description", type="text")
+       p Upload File Or Submit File URL
+       label(name="fileUpload")
+       input(type="file" id="myFile" name="filename")
+       label(name="fileUrl")
+       input(type="text" placeholder='FileUrl' name="fileUrl")
+       input(type="submit", value="Submit")

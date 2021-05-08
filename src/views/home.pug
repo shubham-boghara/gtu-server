@@ -1,0 +1,35 @@
+extends main/main.pug
+
+
+block content
+        .p-8.items-center.justify-center.bg-white
+                .max-w-xs.mx-auto
+                        div
+                           form(action="/search", method="get")
+                              div
+                                label.block.text-sm.font-medium.text-gray-700(for='department-select') Choose a Department:
+                                select#department.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='department' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                                        each val in Department
+                                                option(value=val)= val
+                              div
+                                label.block.text-sm.font-medium.text-gray-700(for='semester-select') Choose a Semester:
+                                        select#semester.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='semester' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                                                each val in Semester
+                                                        option(value=val)= val
+                              div
+                                label.block.text-sm.font-medium.text-gray-700(for='year-select') Choose a Year:
+                                        select#year.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='year' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                                                each val in Year
+                                                        option(value=val)= val
+                              div
+                                label.block.text-sm.font-medium.text-gray-700(for='type-select') Choose a Type:
+                                        select#type.mt-1.block.w-full.pl-3.pr-10.py-2.text-base.border-gray-300.rounded-md(name='type' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                                                each val in Type
+                                                        option(value=val)= val
+                              div
+                                button.inline-flex.items-center.px-4.py-2.border.border-gray-300.shadow-sm.text-base.font-medium.rounded-md.text-gray-700.bg-white(type='submit' class='hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500')
+                                           | Search
+
+
+
+

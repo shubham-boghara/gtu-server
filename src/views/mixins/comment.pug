@@ -1,0 +1,14 @@
+mixin commentblock(comment ={})
+    li
+        .flex.space-x-3
+            .flex-shrink-0
+                img.h-10.w-10.rounded-full(src='/svg/cc.svg' alt='')
+            div
+                .text-sm
+                    a.font-medium.text-gray-900(href='#')=comment.name
+                .mt-1.text-sm.text-gray-700
+                    p=comment.text
+                .mt-2.text-sm.space-x-2
+                    span.text-gray-500.font-medium 4d ago
+                    span.text-gray-500.font-medium &middot;
+                    button.text-gray-900.font-medium(type='button') Reply

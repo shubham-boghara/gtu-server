@@ -1,0 +1,16 @@
+extends main/main
+include mixins/search
+
+block content
+    include parts/searchpart
+    each item in findPost
+        +itemBlock({
+            id:item._id,
+            department:item.department,
+            year:item.year,
+            semester:item.semester,
+            title:item.title,
+            field:item.field,
+            body:item.body,
+            subject:item.subject
+        })
