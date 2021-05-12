@@ -17,15 +17,15 @@ block content
                          .class
                            dt.text-sm.font-medium.text-gray-500
                               | Name
-                           dd.mt-1.text-sm.text-gray-900=post.name
+                           dd.mt-1.text-sm.text-gray-900=material.name
                          .class
                            dt.text-sm.font-medium.text-gray-500
                               | title
-                           dd.mt-1.text-sm.text-gray-900=post.title
+                           dd.mt-1.text-sm.text-gray-900=material.title
                          .class
                            dt.text-sm.font-medium.text-gray-500
                              | About
-                           dd.mt-1.text-sm.text-gray-900=post.body
+                           dd.mt-1.text-sm.text-gray-900=material.body
                          .class
                            dt.text-sm.font-medium.text-gray-500
                              | Attachments
@@ -47,7 +47,7 @@ block content
                 .flex-shrink-0
                     img.h-10.w-10.rounded-full(src='/svg/comment.svg' alt='')
                 .min-w-0.flex-1
-                    form(action='#')
+                    form(action=`/${postId}/comment` method="post")
                         div
                             label.sr-only(for='comment') About
                             textarea#comment.shadow-sm.block.w-full.border-gray-300.rounded-md(name='comment' rows='3' class='focus:ring-blue-500 focus:border-blue-500 sm:text-sm' placeholder='Add a note')

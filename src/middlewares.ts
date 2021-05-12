@@ -1,5 +1,6 @@
 import {Controller} from "./types";
 import jwt from "jsonwebtoken";
+import {strict} from "assert";
 
 
 export const localMiddlewares:Controller = (req,res,next) => {
@@ -15,14 +16,21 @@ export const localMiddlewares:Controller = (req,res,next) => {
 
 export const authJwt:Controller = (req, res, next) => {
     const secret = <string>process.env.SECRET;
+
+
     const cookies = req.cookies;
     const header = req.headers['cookie']?.split(' ')[0].split("=")[1];
-
-    console.log(header);
+     res.locals.user = {
+         userId:null
+     }
     try{
         if(cookies && cookies.token && header){
            const varifecation =  jwt.verify(header,secret);
-           console.log(varifecation);
+
+            if(varifecation){
+                res.locals.user = varifecation;
+            }
+
         }
     }catch (err){
         res.status(501).send({err})

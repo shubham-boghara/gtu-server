@@ -2,33 +2,31 @@ extends main/main.pug
 
 
 block content
-    .formContainer
-        form(action="/post", method="post")
+    .formContainer.flex.justify-center
+        form(action="/post", method="post").flex.flex-col
             label(for='department-select') Choose a Department:
-            select(name='department')
+            select(name='department',required=true)
                 each val in Department
                     option(value=val)= val
 
             label(for='semester-select') Choose a Semester:
-            select(name='semester')
+            select(name='semester',required=true)
                 each val in Semester
                     option(value=val)= val
 
             label(for='year-select') Choose a Year:
-            select(name='year')
+            select(name='year',required=true)
                 each val in Year
                     option(value=val)= val
 
             label(for='type-select') Choose a Type:
-            select(name='type')
+            select(name='type',required=true)
                 each val in Type
                     option(value=val)= val
-            label(name="title") Title:
-            input(name="title", placeholder="title", type="text")
             label(name="subject") Subject Name:
-            input(name="subject", placeholder="subject", type="text")
+            input(name="subject", placeholder="subject", type="text",required=true)
             label(name="body") Description Name:
-            textarea(name="body", placeholder="description", type="text")
+            textarea(name="body", placeholder="description", type="text",required=true)
             input(type="submit", value="Post")
 
 

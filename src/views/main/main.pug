@@ -2,10 +2,14 @@
 html(lang="en")
     head
             meta(charset="UTF-8")
-            script(src="/cdn.ts" type="video/mp2t" defer='')
+
             meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
             link(rel='stylesheet'  type="text/css" href="/css.css")
+            link(rel="stylesheet" type="text/css" href="/style.css")
             title #{title} | #{siteName}
     body
         include ../parts/header
         block content
+        script(src="/js/jquery.min.js")
+        script(src="/js/js.js")
+

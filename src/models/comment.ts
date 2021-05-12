@@ -5,9 +5,14 @@ import {comment} from "./types";
 const commentSchema:Schema= new Schema({
     name: {
         type: String,
+        default:" ",
     },
     text: {
         type: String
+    },
+    date:{
+        type: Date,
+        default: Date.now()
     },
 
 });

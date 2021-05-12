@@ -1,0 +1,12 @@
+#file {
+    border-width: 2px ;
+    border-color: #1f2937;
+}
+
+.addButton {
+    padding: 18px;
+    background-color: #1f2937;
+    color: white;
+    width: 150px;
+    height: 20px;
+}

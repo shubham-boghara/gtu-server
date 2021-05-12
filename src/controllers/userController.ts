@@ -6,18 +6,24 @@ import Comment from "../models/comment";
 
 export const findThis:Controller = async (req,res) => {
     const {params: {id, name}} = req;
-    let post = {};
+    let postId
     let files: fileUrl[]= [];
     let comments:comment[] = [];
     try {
-        const getPost = await Posts.find({_id: id, subject: name}).populate({
+        const getPost = await Posts.findOne({_id: id, subject: name}).populate({
             path: "material",
             populate: {path: 'fileUrl'}
         }).populate("comments");
-        post = getPost[0].material[0]
-        files = getPost[0].material[0].fileUrl;
-        comments = getPost[0].comments
-        res.render("page", {title: "page", siteName: "GTU", post,files,comments,name});
+        if(getPost){
+            files = getPost.material.fileUrl;
+            comments = getPost.comments;
+            postId = getPost._id;
+            let material = getPost.material;
+            res.render("page", {title: "page", siteName: "GTU", postId,files,comments,name,material});
+
+        }else{
+            res.send(`Post not found`);
+        }
 
     } catch (err) {
         res.send({err});
@@ -25,7 +31,7 @@ export const findThis:Controller = async (req,res) => {
 }
 
 export const postComments:Controller = async (req,res)  => {
-    const {params: {id}, body: {text, name}} = req;
+    const {params: {id}, body: {comment:text, name}} = req;
     const post = await Posts.findById({_id: id});
     if (post) {
         const comments = await new Comment({
@@ -34,7 +40,7 @@ export const postComments:Controller = async (req,res)  => {
         await comments.save();
         await post.comments.push(comments._id);
         await post.save();
-        res.send("ok");
+      res.redirect(`/subject/${post.subject}/${id}`);
     } else {
         res.status(501).send("post is not found")
     }

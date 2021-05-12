@@ -1,19 +1,20 @@
 extends main/main
 
 block content
-  .formContainer
-    form(action=`/${id}/uploadM`, method="post")
-      .material Material
+  .formContainer.flex.flex-col.flex-wrap.items-center
+    form(action=`/${id}/post`, method="post").flex.justify-center
+      .material.flex.justify-center.flex-wrap.flex-col
        br
        label(name="name") Material Name:
-       input(name="name", placeholder="name" , type="text")
+       input(name="name", placeholder="name" , type="text",required=true,value=name)
        label(name="m_title") Material Title:
-       input(name="m_title", placeholder="title", type="text")
+       input(name="m_title", placeholder="title", type="text",required=true)
        label(name="body") Description:
-       input(name="body", placeholder="description", type="text")
-       p Upload File Or Submit File URL
-       label(name="fileUpload")
-       input(type="file" id="myFile" name="filename")
-       label(name="fileUrl")
-       input(type="text" placeholder='FileUrl' name="fileUrl")
+       input(name="body", placeholder="description", type="text",required=true)
        input(type="submit", value="Submit")
+
+    button.flex.justify-center.items-center.mt-4( type="button" class="addButton" onclick=`input()`) +
+    div.flex.mt-4.justify-center.items-center
+      .div
+         form(action=`/${id}/upload`,id="file", method="post").flex.justify-center.flex-col.flex-wrap
+             input(type="submit", value="Submit" style="background-color:red;")

@@ -35,6 +35,7 @@ export const postLogin:Controller = async (req,res) => {
     if(findUser && bcryptjs.compareSync(password,s)){
         const token = jwt.sign(
             {
+                name:findUser.username,
                 userId: findUser._id,
                 isAdmin: findUser.isAdmin
             },

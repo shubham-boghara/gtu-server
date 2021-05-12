@@ -4,13 +4,16 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="6">
+          <list size="9">
             <item index="0" class="java.lang.String" itemvalue="name" />
             <item index="1" class="java.lang.String" itemvalue="script-src" />
             <item index="2" class="java.lang.String" itemvalue="style-src" />
             <item index="3" class="java.lang.String" itemvalue="script" />
             <item index="4" class="java.lang.String" itemvalue="x-bind:aria-expanded" />
             <item index="5" class="java.lang.String" itemvalue="x-state:on" />
+            <item index="6" class="java.lang.String" itemvalue="@click" />
+            <item index="7" class="java.lang.String" itemvalue="script-src-" />
+            <item index="8" class="java.lang.String" itemvalue="script-src-self" />
           </list>
         </value>
       </option>
